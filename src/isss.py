@@ -2,7 +2,7 @@ import math
 import numpy as np
 
 
-class ISSS2():
+class ISSS():
     """
     ISSS 算法 for FCM权重学习
     Iterative Smoothing algorithm with Structure Sparsity (ISSS)
@@ -229,7 +229,7 @@ if __name__ == '__main__':
     T = 3
     N = 4
     U = np.array([[0.1,0.1,0.1,0.1], [0.2,0.2,0.2,0.2], [0.3,0.3,0.3,0.3], [0.4,0.4,0.4,0.4], [0.5,0.5,0.5,0.5], [0.6,0.6,0.4,0.4]])  # 3 * 4
-    isss = ISSS2(U, S, T, N, display=True)
+    isss = ISSS(U, S, T, N, display=True)
     isss.fit()
 
 

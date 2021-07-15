@@ -2,7 +2,7 @@
 import numpy as np
 import math
 from dataset.generate_data import SynDataGenerator
-from fcms.isss2 import ISSS2
+from fcms.isss import ISSS
 
 # 全局参数
 density = 0.4
@@ -73,14 +73,14 @@ def SS_means(weights_true, weights_predicted):
     return SS_mean
 
 
-def run_fcm_isss2():
+def run_fcm_isss():
     # ------------- 合成数据产生
     syn = SynDataGenerator(density=density, S=response_nums, T=data_len, N=concept_nums)
     obvs, weights = syn.generate_data()
     # obvs, weights = syn.generate_data_noised(sigma=0.001)
     print(obvs.shape)
     # -------------- FCM训练拟合权重
-    isss = ISSS2(U=obvs, S=response_nums, T=data_len, N=concept_nums, display=False, lamd=0.005, beta=0.0001, gamma=0.0001)
+    isss = ISSS(U=obvs, S=response_nums, T=data_len, N=concept_nums, display=False, lamd=0.005, beta=0.0001, gamma=0.0001)
     predicted_weights = isss.fit()
     print(weights)
     print(predicted_weights)
@@ -91,4 +91,4 @@ def run_fcm_isss2():
 
 if __name__ == '__main__':
 
-    run_fcm_isss2()
+    run_fcm_isss()
